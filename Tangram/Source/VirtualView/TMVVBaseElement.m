@@ -68,8 +68,8 @@ static BOOL xmlIsLoad = NO;
 }
 - (void)subViewLongPressed:(NSString*)action andValue:(NSString*)value gesture:(UILongPressGestureRecognizer *)gesture
 {
-    
 }
+
 + (CGFloat)heightByModel:(TangramDefaultItemModel *)itemModel
 {
     CGFloat ratio = [[VVTempleteManager sharedInstance]ratioByElementType:itemModel.type];
