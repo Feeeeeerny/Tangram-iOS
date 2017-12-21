@@ -11,6 +11,9 @@
 #import "TangramStickyLayout.h"
 #import "TangramDragableLayout.h"
 #import "TangramFixLayout.h"
+#import "TangramFlowLayout.h"
+#import "TangramPageScrollLayout.h"
+#import "TangramWaterFlowLayout.h"
 #import "TangramEvent.h"
 #import "TangramContext.h"
 #import <VirtualView/UIView+VirtualView.h>
@@ -809,6 +812,22 @@
             [layoutEnterEvent setParam:[NSNumber numberWithUnsignedInteger:times] forKey:@"times"];
             [self.hostTangramView.tangramBus postEvent:layoutEnterEvent];
             [self.hostTangramView.layoutEnterTimesDict tm_safeSetObject:[NSNumber numberWithUnsignedInteger:times + 1] forKey:layout.identifier];
+        }
+    }
+    //遍历出现在视野范围内的layout，异步加载内容
+    for (NSUInteger i = min-1; i <= MIN(max + 5, self.hostTangramView.layoutDict.count); i++) {
+        UIView<TangramLayoutProtocol> *layout = [self.hostTangramView.layoutDict tm_safeObjectForKey:[NSString stringWithFormat:@"%ld",(long)i]];
+        if (!layout) {
+            continue;
+        }
+        //先只支持流式布局的异步加载
+        if ([layout isKindOfClass:[TangramFlowLayout class]] || [layout isKindOfClass:[TangramPageScrollLayout class]] || [layout isKindOfClass:[TangramWaterFlowLayout class]]) {
+            if (!layout.loaded && layout.loadAPI && layout.loadAPI.length > 0){
+                TangramEvent *asyncloadEvent = [[TangramEvent alloc]initWithTopic:@"asyncload" withTangramView:self.hostTangramView posterIdentifier:@"asyncload" andPoster:layout];
+                [asyncloadEvent setParam:layout.loadAPI forKey:@"loadName"];
+                [self.hostTangramView.tangramBus postEvent:asyncloadEvent];
+                layout.loaded = true;
+            }
         }
     }
     //完毕，写入lastVisibleLayoutSet

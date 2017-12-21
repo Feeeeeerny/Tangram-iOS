@@ -40,6 +40,7 @@
 @end
 @implementation TangramFlowLayout
 @synthesize itemModels  = _itemModels;
+@synthesize loaded  = _loaded;
 
 - (NSMutableDictionary *)layoutModelDict
 {
@@ -752,6 +753,13 @@
 - (void)setIdentifier:(NSString *)identifier
 {
     self.layoutIdentifier = identifier;
+}
+- (BOOL)loaded
+{
+    return _loaded;
+}
+- (void)setLoaded:(BOOL)loaded{
+    _loaded = loaded;
 }
 #pragma mark - private
 - (void)setItemLeft:(CGFloat)left withModel:(NSObject<TangramItemModelProtocol> *)model
