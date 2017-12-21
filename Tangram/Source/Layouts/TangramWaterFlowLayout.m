@@ -34,7 +34,15 @@
 
 @synthesize itemModels  = _itemModels;
 @synthesize cellWidth   = _cellWidth;
+@synthesize loaded  = _loaded;
 
+- (BOOL)loaded
+{
+    return _loaded;
+}
+- (void)setLoaded:(BOOL)loaded{
+    _loaded = loaded;
+}
 
 - (NSString *)identifier
 {

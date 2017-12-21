@@ -87,6 +87,7 @@
 @end
 @implementation TangramPageScrollLayout
 @synthesize itemModels  = _itemModels;
+@synthesize loaded  = _loaded;
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -330,7 +331,13 @@
 {
     return self.layoutLoadAPI;
 }
-
+- (BOOL)loaded
+{
+    return _loaded;
+}
+- (void)setLoaded:(BOOL)loaded{
+    _loaded = loaded;
+}
 #pragma mark - Overwrite
 - (void)addSubview:(UIView *)view
 {
