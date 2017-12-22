@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ZTangram"
-  s.version      = "2.0.2"
+  s.version      = "2.0.3"
   s.summary      = "Tangram is a UI Framework for building a fast and dynamic ScrollView."
   
   s.description  = <<-DESC
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios
   s.ios.deployment_target = '7.0'
   s.requires_arc = true
-  s.source       = { :git => "https://github.com/Feeeeeerny/Tangram-iOS.git", :tag => "2.0.2" }
+  s.source       = { :git => "https://github.com/Feeeeeerny/Tangram-iOS.git", :tag => "2.0.3" }
   s.resources    = 'Tangram/Resource/*.{plist,json,out}'
 
   s.source_files  = "Tangram/Source/{Factory,Core,Helper,Layouts,VirtualView,Protocols,Model,EventBus,Util}/*.{h,m}"

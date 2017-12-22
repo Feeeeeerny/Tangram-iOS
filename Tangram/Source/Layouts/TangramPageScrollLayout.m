@@ -661,7 +661,11 @@
         [mutableItemModels tm_safeAddObject:self.footerItemModel];
     }
     _itemModels = [mutableItemModels copy];
-    
+    //fix:更新itemModel后，老视图没有被清除；暂时先这么改，后面再更新为官方的写法
+    //TODO:视图还是会重复添加
+    [self.scrollView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj removeFromSuperview];
+    }];
 }
 - (NSArray *)itemModels
 {
