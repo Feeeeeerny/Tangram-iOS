@@ -327,10 +327,12 @@
 {
     self.layoutIdentifier = identifier;
 }
--(NSString *)loadAPI
+
+- (NSDictionary *)loadWService
 {
-    return self.layoutLoadAPI;
+    return self.wservice;
 }
+
 - (BOOL)loaded
 {
     return _loaded;
@@ -342,7 +344,7 @@
 - (void)addSubview:(UIView *)view
 {
     if (view && view.reuseIdentifier) {
-        view.reuseIdentifier = @"";
+//        view.reuseIdentifier = @"";
         [self.scrollView addSubview:view];
         if (self.infiniteLoop) {
             if (self.scrollView.subviews.count == self.itemModels.count) {

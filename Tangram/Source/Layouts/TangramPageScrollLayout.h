@@ -79,7 +79,7 @@ typedef NS_ENUM(NSUInteger,IndicatorStyleType)
 @property   (nonatomic, assign) CGFloat             scrollMarginRight;
 // Margin for every page, the sequence of top, right, bottom, left, the class type in array can be NSNumber or NSString
 @property   (nonatomic, strong) NSArray             *pageMargin;
-@property   (nonatomic, strong) NSString            *layoutLoadAPI;
+@property   (nonatomic, strong) NSDictionary        *wservice;
 
 @property   (nonatomic, strong) NSString            *bgImgURL;
 

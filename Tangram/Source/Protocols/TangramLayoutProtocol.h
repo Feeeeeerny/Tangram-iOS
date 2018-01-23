@@ -31,6 +31,7 @@ typedef NSString TangramLayoutType;
 @property (nonatomic, strong) NSString *identifier;
 // load status for layout
 @property (nonatomic, assign) BOOL loaded;
+
 // Calculate itemModel position
 - (void)calculateLayout;
 - (void)heightChangedWithElement:(UIView *)element model:(NSObject<TangramItemModelProtocol> *)model;
@@ -43,10 +44,9 @@ typedef NSString TangramLayoutType;
 - (CGFloat)marginLeft;
 // Position is for Layout like FixLayout to get fixed position
 - (NSString *)position;
-// loadAPI
-- (NSString *)loadAPI;
+//依赖的微服务
+- (NSDictionary *)loadWService;
 - (TangramLayoutLoadType)loadType;
-- (NSDictionary *)loadParams;
 
 - (void)setSubLayoutIndex:(NSString *)layoutIndex;
 

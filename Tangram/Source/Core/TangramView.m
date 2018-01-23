@@ -413,7 +413,7 @@
             [self.layoutDict tm_safeSetValue:layout forKey:layoutKey];
             [self.layoutKeyArray tm_safeAddObject:layoutKey];
             NSUInteger numberOfItemsInLayout = [self.clDataSource numberOfItemsInTangramView:self forLayout:layout];
-            if(numberOfItemsInLayout == 0 && [layout respondsToSelector:@selector(loadAPI)] && [layout loadAPI].length > 0)
+            if(numberOfItemsInLayout == 0 && [layout respondsToSelector:@selector(loadWService)] && [layout loadWService].allKeys.count > 0)
             {
                 continue;
             }
@@ -822,9 +822,15 @@
         }
         //先只支持流式布局的异步加载
         if ([layout isKindOfClass:[TangramFlowLayout class]] || [layout isKindOfClass:[TangramPageScrollLayout class]] || [layout isKindOfClass:[TangramWaterFlowLayout class]]) {
-            if (!layout.loaded && layout.loadAPI && layout.loadAPI.length > 0){
+            if (!layout.loaded && layout.loadWService && [layout.loadWService objectForKey:@"uri"]){
                 TangramEvent *asyncloadEvent = [[TangramEvent alloc]initWithTopic:@"asyncload" withTangramView:self.hostTangramView posterIdentifier:@"asyncload" andPoster:layout];
-                [asyncloadEvent setParam:layout.loadAPI forKey:@"loadName"];
+                [asyncloadEvent setParam:[layout.loadWService objectForKey:@"uri"] forKey:@"uri"];
+                if ([layout.loadWService objectForKey:@"biz_params"]) {
+                    [asyncloadEvent setParam:[layout.loadWService objectForKey:@"biz_params"] forKey:@"biz_params"];
+                }
+                if ([layout.loadWService objectForKey:@"base_params"]) {
+                    [asyncloadEvent setParam:[layout.loadWService objectForKey:@"base_params"] forKey:@"base_params"];
+                }
                 [self.hostTangramView.tangramBus postEvent:asyncloadEvent];
                 layout.loaded = true;
             }

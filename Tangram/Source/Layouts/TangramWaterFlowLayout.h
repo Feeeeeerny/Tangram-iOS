@@ -33,7 +33,8 @@
 
 @property (nonatomic, assign) TangramLayoutLoadType  loadType;
 
-@property (nonatomic, strong) NSString               *layoutLoadAPI;
+@property (nonatomic, strong) NSDictionary           *wservice;
+
 
 @property (nonatomic, assign) CGFloat  zIndex;
 

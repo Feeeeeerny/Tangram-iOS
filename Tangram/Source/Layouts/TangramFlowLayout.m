@@ -203,15 +203,15 @@
 - (void)calculateLayout
 {
     //抛出可异步加载的事件,暂时仅FlowLayout支持
-    if ((self.loadType == TangramLayoutLoadTypeLoadOnce || self.loadType == TangramLayoutLoadTypeByPage) && self.loadAPI.length > 0) {
-        TangramEvent *loadEvent = [[TangramEvent alloc]initWithTopic:@"requestItems" withTangramView:self.tangramView posterIdentifier:@"requestItems" andPoster:self];
-        [loadEvent setParam:self.loadAPI forKey:@"loadAPI"];
-        [loadEvent setParam:[NSNumber numberWithInteger:self.loadType] forKey:@"loadType"];
-        if (self.loadParams.count > 0) {
-            [loadEvent setParam:self.loadParams forKey:@"loadParams"];
-        }
-        [self.tangramBus postEvent:loadEvent];
-    }
+//    if ((self.loadType == TangramLayoutLoadTypeLoadOnce || self.loadType == TangramLayoutLoadTypeByPage) && self.loadAPI.length > 0) {
+//        TangramEvent *loadEvent = [[TangramEvent alloc]initWithTopic:@"requestItems" withTangramView:self.tangramView posterIdentifier:@"requestItems" andPoster:self];
+//        [loadEvent setParam:self.loadAPI forKey:@"loadAPI"];
+//        [loadEvent setParam:[NSNumber numberWithInteger:self.loadType] forKey:@"loadType"];
+//        if (self.loadParams.count > 0) {
+//            [loadEvent setParam:self.loadParams forKey:@"loadParams"];
+//        }
+//        [self.tangramBus postEvent:loadEvent];
+//    }
     //先移除,最后再加上去
     if (self.subLayoutIdentifiers.count > 0) {
          [self removeUnuseSubLayouts];
@@ -741,9 +741,9 @@
     });
 }
 
--(NSString *)loadAPI
+- (NSDictionary *)loadWService
 {
-    return self.layoutLoadAPI;
+    return self.wservice;
 }
 
 -(NSString *)identifier

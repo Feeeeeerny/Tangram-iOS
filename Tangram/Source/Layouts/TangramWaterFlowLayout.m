@@ -243,15 +243,8 @@
     
 }
 
--(NSString *)layoutLoadAPI
+- (NSDictionary *)loadWService
 {
-    if (nil == _layoutLoadAPI) {
-        _layoutLoadAPI = @"";
-    }
-    return _layoutLoadAPI;
-}
--(NSString *)loadAPI
-{
-    return self.layoutLoadAPI;
+    return self.wservice;
 }
 @end

@@ -90,9 +90,8 @@
     layout.vGap = [styleDict tm_floatForKey:@"vGap"];
     layout.hGap = [styleDict tm_floatForKey:@"hGap"];
     layout.autoFill = [styleDict tm_boolForKey:@"autoFill"];
-    layout.layoutLoadAPI = [dict tm_stringForKey:@"load"];
+    layout.wservice = [dict tm_dictionaryForKey:@"wservice"];
     layout.loadType = [dict tm_integerForKey:@"loadType"];
-    layout.loadParams = [dict tm_dictionaryForKey:@"loadParams"];
     layout.zIndex = [styleDict tm_floatForKey:@"zIndex"];
     layout.enableInnerZIndexLayout = [styleDict tm_boolForKey:@"enableInnerZIndexLayout"];
     if ([[styleDict tm_stringForKey:@"bgScaleType"] isEqualToString:@"fitStart"]) {
@@ -168,7 +167,7 @@
     layout.indicatorImg1 = [styleDict tm_stringForKey:@"indicatorImg1"];
     layout.indicatorImg2 = [styleDict tm_stringForKey:@"indicatorImg2"];
     layout.autoScrollTime = [styleDict tm_floatForKey:@"autoScroll"]/1000.0;
-    layout.layoutLoadAPI = [dict tm_stringForKey:@"load"];
+    layout.wservice = [dict tm_dictionaryForKey:@"wservice"];
     layout.zIndex = [styleDict tm_floatForKey:@"zIndex"];
     if ([styleDict tm_stringForKey:@"infiniteMinCount"].length > 0) {
         layout.infiniteLoop = YES;
@@ -341,7 +340,7 @@
     NSDictionary *styleDict = [dict tm_dictionaryForKey:@"style"];
     layout.vGap = [styleDict tm_floatForKey:@"vGap"];
     layout.hGap = [styleDict tm_floatForKey:@"hGap"];
-    layout.layoutLoadAPI = [dict tm_stringForKey:@"load"];
+    layout.wservice = [dict tm_dictionaryForKey:@"wservice"];
     layout.loadType = [dict tm_integerForKey:@"loadType"];
     layout.zIndex = [styleDict tm_floatForKey:@"zIndex"];
     NSArray *margin = [styleDict tm_arrayForKey:@"margin"];
