@@ -822,9 +822,9 @@
         }
         //先只支持流式布局的异步加载
         if ([layout isKindOfClass:[TangramFlowLayout class]] || [layout isKindOfClass:[TangramPageScrollLayout class]] || [layout isKindOfClass:[TangramWaterFlowLayout class]]) {
-            if (!layout.loaded && layout.loadWService && [layout.loadWService objectForKey:@"uri"]){
+            if (!layout.loaded && layout.loadWService && [layout.loadWService objectForKey:@"api"]){
                 TangramEvent *asyncloadEvent = [[TangramEvent alloc]initWithTopic:@"asyncload" withTangramView:self.hostTangramView posterIdentifier:@"asyncload" andPoster:layout];
-                [asyncloadEvent setParam:[layout.loadWService objectForKey:@"uri"] forKey:@"uri"];
+                [asyncloadEvent setParam:[layout.loadWService objectForKey:@"api"] forKey:@"api"];
                 if ([layout.loadWService objectForKey:@"biz_params"]) {
                     [asyncloadEvent setParam:[layout.loadWService objectForKey:@"biz_params"] forKey:@"biz_params"];
                 }
