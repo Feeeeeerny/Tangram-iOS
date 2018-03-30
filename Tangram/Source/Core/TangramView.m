@@ -343,7 +343,7 @@
             }
         }
         //强制让fix/dragable/sticky布局里面的组件 不做复用处理
-        if ([layout isKindOfClass:[TangramFixLayout class]] || [layout isKindOfClass:[TangramDragableLayout class]] || [layout isKindOfClass:[TangramStickyLayout class]]) {
+        if ([layout isKindOfClass:[TangramFixLayout class]] || [layout isKindOfClass:[TangramDragableLayout class]]) {
             item.reuseIdentifier = @"";
         }
         item.frame = model.itemFrame;
@@ -885,6 +885,9 @@
             ((TangramStickyLayout *)layout).enterFloatStatus = YES;
             layout.frame = CGRectMake(layout.frame.origin.x,scrollView.contentOffset.y + topOffset + layout.marginTop + ((TangramStickyLayout *)layout).extraOffset , layout.frame.size.width, layout.frame.size.height);
             topOffset += (layout.height + layout.marginTop + layout.marginBottom + ((TangramStickyLayout *)layout).extraOffset) ;
+            [layout.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                obj.hidden = NO;
+            }];
         }
         //吸底判断
         else if(((TangramStickyLayout *)layout).stickyBottom == YES
