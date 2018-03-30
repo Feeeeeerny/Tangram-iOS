@@ -278,6 +278,7 @@
     layout.animationDuration = [styleDict tm_floatForKey:@"animationDuration"]/1000.f;
     layout.hGap = [styleDict tm_floatForKey:@"hGap"];
     layout.padding = [styleDict tm_arrayForKey:@"padding"];
+    layout.wservice = [dict tm_dictionaryForKey:@"wservice"];
     id tmpValue = [styleDict tm_safeObjectForKey:@"retainScrollState"];
     if (tmpValue && ([tmpValue isKindOfClass:[NSNumber class]] || [tmpValue isKindOfClass:[NSString class]])) {
         layout.retainScrollState = [tmpValue boolValue];
@@ -316,6 +317,7 @@
     NSDictionary *styleDict = [dict tm_dictionaryForKey:@"style"];
     NSArray *margin = [styleDict tm_arrayForKey:@"margin"];
     layout.zIndex = [styleDict tm_floatForKey:@"zIndex"];
+    layout.wservice = [dict tm_dictionaryForKey:@"wservice"];
     NSString *originMarginString = [styleDict tm_stringForKey:@"margin"];
     if (margin.count  != 4 && originMarginString.length > 3) {
         NSString *splitString = [originMarginString substringWithRange:NSMakeRange(1, originMarginString.length-2)];

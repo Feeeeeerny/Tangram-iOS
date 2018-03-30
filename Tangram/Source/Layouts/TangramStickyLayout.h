@@ -29,5 +29,7 @@
 @property (nonatomic, weak)   TangramBus            *tangramBus;
 
 @property   (nonatomic, assign) CGFloat             zIndex;
+@property   (nonatomic, strong) NSDictionary        *wservice;
+
 
 @end

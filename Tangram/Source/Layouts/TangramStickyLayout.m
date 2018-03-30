@@ -22,6 +22,8 @@
 @implementation TangramStickyLayout
 
 @synthesize itemModels  = _itemModels;
+@synthesize loaded  = _loaded;
+
 - (TangramLayoutType *)layoutType
 {
     return @"tangram_layout_sticky";
@@ -132,4 +134,13 @@
     }
     _enterFloatStatus = enterFloatStatus;
 }
+- (NSDictionary *)loadWService
+{
+    return self.wservice;
+}
+- (BOOL)loaded
+{
+    return _loaded;
+}
+
 @end

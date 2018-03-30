@@ -68,5 +68,7 @@ typedef NS_ENUM(NSInteger, TangramFixAppearanceType)
 @property   (nonatomic, assign) BOOL            retainScrollState;
 
 @property   (nonatomic, assign) CGFloat             zIndex;
+@property   (nonatomic, strong) NSDictionary        *wservice;
+
 
 @end

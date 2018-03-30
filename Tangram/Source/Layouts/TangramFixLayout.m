@@ -30,6 +30,7 @@
 @implementation TangramFixLayout
 
 @synthesize itemModels  = _itemModels;
+@synthesize loaded  = _loaded;
 
 - (instancetype)init
 {
@@ -277,6 +278,14 @@
     }];
 }
 
+- (NSDictionary *)loadWService
+{
+    return self.wservice;
+}
+- (BOOL)loaded
+{
+    return _loaded;
+}
 
 
 @end

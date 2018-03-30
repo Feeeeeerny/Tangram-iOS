@@ -821,7 +821,7 @@
             continue;
         }
         //先只支持流式布局的异步加载
-        if ([layout isKindOfClass:[TangramFlowLayout class]] || [layout isKindOfClass:[TangramPageScrollLayout class]] || [layout isKindOfClass:[TangramWaterFlowLayout class]]) {
+//        if ([layout isKindOfClass:[TangramFlowLayout class]] || [layout isKindOfClass:[TangramPageScrollLayout class]] || [layout isKindOfClass:[TangramWaterFlowLayout class]]) {
             if (!layout.loaded && layout.loadWService && [layout.loadWService objectForKey:@"api"]){
                 TangramEvent *asyncloadEvent = [[TangramEvent alloc]initWithTopic:@"asyncload" withTangramView:self.hostTangramView posterIdentifier:@"asyncload" andPoster:layout];
                 [asyncloadEvent setParam:[layout.loadWService objectForKey:@"api"] forKey:@"api"];
@@ -834,7 +834,7 @@
                 [self.hostTangramView.tangramBus postEvent:asyncloadEvent];
                 layout.loaded = true;
             }
-        }
+//        }
     }
     //完毕，写入lastVisibleLayoutSet
     self.hostTangramView.lastVisibleLayoutIdentifierSet = [self.hostTangramView.visibleLayoutIdentifierSet mutableCopy];

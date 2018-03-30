@@ -128,6 +128,12 @@
 		<key>type</key>
 		<string>container-scroll</string>
 	</dict>
+    <dict>
+        <key>class</key>
+        <string>TangramPageScrollLayout</string>
+        <key>type</key>
+        <string>container-banner</string>
+    </dict>
 	<dict>
 		<key>class</key>
 		<string>TangramFixLayout</string>
