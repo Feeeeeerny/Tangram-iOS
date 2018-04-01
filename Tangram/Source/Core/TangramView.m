@@ -911,6 +911,12 @@
     {
         [self.hostTangramView.clDelegate scrollViewDidScroll:self.hostTangramView];
     }
+    //由于源码不知道哪里在滑动过程中隐藏了stickylayout，现在强制显示
+    for (UIView<TangramLayoutProtocol> *layout in self.hostTangramView.stickyLayoutArray) {
+        [layout.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            obj.hidden = NO;
+        }];
+    }
 }
 
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView NS_AVAILABLE_IOS(3_2)

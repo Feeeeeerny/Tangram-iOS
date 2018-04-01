@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ZTangram"
-  s.version      = "2.1.3"
+  s.version      = "2.1.4"
   s.summary      = "Tangram is a UI Framework for building a fast and dynamic ScrollView."
   
   s.description  = <<-DESC
