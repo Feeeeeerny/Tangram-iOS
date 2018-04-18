@@ -472,7 +472,7 @@
     }
     
     //如果是点的PageControl
-    if (self.hasIndicator) {
+    if (self.hasIndicator && self.itemModels.count > 1) {
         if (self.indicatorStyleType == IndicatorStyleDot)
         {
             if (self.indicatorImg1.length <= 0 && self.indicatorImg2.length <= 0) {
