@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ZTangram"
-  s.version      = "2.1.5"
+  s.version      = "2.1.6"
   s.summary      = "Tangram is a UI Framework for building a fast and dynamic ScrollView."
   
   s.description  = <<-DESC
@@ -85,8 +85,9 @@ Pod::Spec.new do |s|
 
 
   
-  s.dependency 'LazyScroll', '~> 1.0'
+  s.dependency 'LazyScroll', '1.0.0'
+  s.dependency 'TMUtils', '1.0.0'
   s.dependency 'VirtualView', '1.0.0'
-  s.dependency 'SDWebImage', '~> 4.2'
+  s.dependency 'SDWebImage'
   
 end
