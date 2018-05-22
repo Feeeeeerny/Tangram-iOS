@@ -50,7 +50,6 @@
 
 @property   (nonatomic, strong) UIScrollView        *scrollView;
 @property   (nonatomic, strong) TMPageControl       *pageControl;
-@property   (nonatomic, weak) id<TangramPageScrollLayoutDelegate> delegate;
 
 @property   (nonatomic, strong) NSString            *layoutIdentifier;
 @property   (nonatomic, strong) UIView              *firstCopyView;

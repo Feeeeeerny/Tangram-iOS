@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TangramLayoutProtocol.h"
 #import "TangramBus.h"
+@protocol TangramPageScrollLayoutDelegate;
 @interface TangramPageScrollLayout : UIView<TangramLayoutProtocol>
 typedef NS_ENUM(NSUInteger,IndicatorGravityType)
 {
@@ -85,6 +86,7 @@ typedef NS_ENUM(NSUInteger,IndicatorStyleType)
 
 @property   (nonatomic, assign) CGFloat             zIndex;
 
+@property   (nonatomic, weak) id<TangramPageScrollLayoutDelegate> delegate;
 //启用margin去重，留个坑，滚动布局暂时不做处理
 //@property   (nonatomic, assign) BOOL enableMarginDeduplication;
 
