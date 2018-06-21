@@ -45,6 +45,7 @@
 @property (nonatomic, strong) NSString *layoutIdentifierForLayoutModel;
 
 @property (nonatomic, assign) CGFloat zIndex;
+@property (nonatomic, assign, readonly) CGRect modelRect;
 
 - (NSArray *)bizKeys;
 

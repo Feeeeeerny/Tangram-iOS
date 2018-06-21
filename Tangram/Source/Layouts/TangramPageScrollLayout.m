@@ -358,11 +358,35 @@
 
 - (void)addFooterView:(UIView *)footerView
 {
+    //如果没有内容数据，则header和footer也不添加
+    NSInteger modelCount = self.itemModels.count;
+    if ([self.itemModels containsObject:self.headerItemModel]) {
+        modelCount --;
+    }
+    if ([self.itemModels containsObject:self.footerItemModel]) {
+        modelCount --;
+    }
+    if (nil == self.itemModels || 0 == modelCount) {
+        return;
+    }
+
     [super addSubview:footerView];
 }
 
 - (void)addHeaderView:(UIView *)headerView
 {
+    //如果没有内容数据，则header和footer也不添加
+    NSInteger modelCount = self.itemModels.count;
+    if ([self.itemModels containsObject:self.headerItemModel]) {
+        modelCount --;
+    }
+    if ([self.itemModels containsObject:self.footerItemModel]) {
+        modelCount --;
+    }
+    if (nil == self.itemModels || 0 == modelCount) {
+        return;
+    }
+
     [super addSubview:headerView];
 }
 

@@ -137,10 +137,34 @@
 
 - (void)addHeaderView:(UIView *)headerView
 {
+    //如果没有内容数据，则header和footer也不添加
+    NSInteger modelCount = self.itemModels.count;
+    if ([self.itemModels containsObject:self.headerItemModel]) {
+        modelCount --;
+    }
+    if ([self.itemModels containsObject:self.footerItemModel]) {
+        modelCount --;
+    }
+    if (nil == self.itemModels || 0 == modelCount) {
+        return;
+    }
+
     [self addSubview:headerView];
 }
 - (void)addFooterView:(UIView *)footerView
 {
+    //如果没有内容数据，则header和footer也不添加
+    NSInteger modelCount = self.itemModels.count;
+    if ([self.itemModels containsObject:self.headerItemModel]) {
+        modelCount --;
+    }
+    if ([self.itemModels containsObject:self.footerItemModel]) {
+        modelCount --;
+    }
+    if (nil == self.itemModels || 0 == modelCount) {
+        return;
+    }
+
     [self addSubview:footerView];
 }
 
@@ -218,7 +242,14 @@
     }
     //如果说Model的数量为0 直接高度为0返回，不往下计算了
     //如果有header或者footer，但是items里面是空的，也不进行计算了
-    if (nil == self.itemModels || 0 == self.contentItemModelCount) {
+    NSInteger modelCount = self.itemModels.count;
+    if ([self.itemModels containsObject:self.headerItemModel]) {
+        modelCount --;
+    }
+    if ([self.itemModels containsObject:self.footerItemModel]) {
+        modelCount --;
+    }
+    if (nil == self.itemModels || 0 == modelCount) {
         self.height = 0.f;
         return;
     }

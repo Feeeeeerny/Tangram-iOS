@@ -814,28 +814,7 @@
             [self.hostTangramView.layoutEnterTimesDict tm_safeSetObject:[NSNumber numberWithUnsignedInteger:times + 1] forKey:layout.identifier];
         }
     }
-    //遍历出现在视野范围内的layout，异步加载内容
-    for (NSUInteger i = min-1; i <= MIN(max + 5, self.hostTangramView.layoutDict.count); i++) {
-        UIView<TangramLayoutProtocol> *layout = [self.hostTangramView.layoutDict tm_safeObjectForKey:[NSString stringWithFormat:@"%ld",(long)i]];
-        if (!layout) {
-            continue;
-        }
-        //先只支持流式布局的异步加载
-//        if ([layout isKindOfClass:[TangramFlowLayout class]] || [layout isKindOfClass:[TangramPageScrollLayout class]] || [layout isKindOfClass:[TangramWaterFlowLayout class]]) {
-            if (!layout.loaded && layout.loadWService && [layout.loadWService objectForKey:@"api"]){
-                TangramEvent *asyncloadEvent = [[TangramEvent alloc]initWithTopic:@"asyncload" withTangramView:self.hostTangramView posterIdentifier:@"asyncload" andPoster:layout];
-                [asyncloadEvent setParam:[layout.loadWService objectForKey:@"api"] forKey:@"api"];
-                if ([layout.loadWService objectForKey:@"biz_params"]) {
-                    [asyncloadEvent setParam:[layout.loadWService objectForKey:@"biz_params"] forKey:@"biz_params"];
-                }
-                if ([layout.loadWService objectForKey:@"base_params"]) {
-                    [asyncloadEvent setParam:[layout.loadWService objectForKey:@"base_params"] forKey:@"base_params"];
-                }
-                [self.hostTangramView.tangramBus postEvent:asyncloadEvent];
-                layout.loaded = true;
-            }
-//        }
-    }
+    
     //完毕，写入lastVisibleLayoutSet
     self.hostTangramView.lastVisibleLayoutIdentifierSet = [self.hostTangramView.visibleLayoutIdentifierSet mutableCopy];
     
